@@ -11,6 +11,20 @@ import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 /**
+ * 
+ * create table mensagem (
+data date,
+texto varchar(50),
+nick varchar(20)
+)
+
+select * from mensagem
+
+
+
+
+insert into mensagem values('2001-01-01','testee','Marushio');
+
  *
  * @author a1320769
  */
