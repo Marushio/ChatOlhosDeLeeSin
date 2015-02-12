@@ -7,6 +7,7 @@
 package chat;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ public class MensagemDAO {
             sql.append("insert into mensagem (data, texto, nick)");
             sql.append("values(?,?,?)");
             psmt = con.prepareStatement(sql.toString());
-            psmt.setDate(1, mensagem.getDate());
+            Date dataSQL = new Date(mensagem.getDate().getTime());
+            psmt.setDate(1, dataSQL);
             psmt.setString(2, mensagem.getTexto());
             psmt.setString(3, mensagem.getNick());
             psmt.execute();            
