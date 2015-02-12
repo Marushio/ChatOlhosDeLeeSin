@@ -12,7 +12,7 @@ import java.sql.Date;
  */
 public class Mensagem implements Comparable{
     
-    private String nick,mensagem;
+    private String nick,texto;
     private Date date;
     
     
@@ -26,12 +26,12 @@ public class Mensagem implements Comparable{
         this.nick = nick;
     }
 
-    public String getMensagem() {
-        return mensagem;
+    public String getTexto() {
+        return texto;
     }
 
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
     public Date getDate() {
@@ -46,14 +46,14 @@ public class Mensagem implements Comparable{
         Mensagem msg2 = (Mensagem) t;
         
         if(this.date.compareTo(msg2.getDate())==0)
-            return this.nick.compareTo(msg2.getMensagem());
+            return this.nick.compareTo(msg2.getTexto());
         else return this.date.compareTo(msg2.getDate());
     }
     @Override
     public boolean equals(Object t){
          Mensagem msg2 = (Mensagem) t;
          if(this.date.equals(msg2.getDate()) &&
-           this.mensagem.equals(msg2.getMensagem()) &&
+           this.texto.equals(msg2.getTexto()) &&
            this.nick.equals(msg2.getNick()))
              return true;
         else return false;
