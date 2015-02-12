@@ -9,6 +9,7 @@ package chat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -44,12 +45,18 @@ public class MensagemDAO {
             psmt = con.prepareStatement(sql);
             rs = psmt.executeQuery();
             Mensagem mensagem = null;
-            while(rs.next())
+            while(rs.next()){
                 mensagem =  new Mensagem();
                 mensagem.setDate(rs.getDate("data"));
                 mensagem.setNick(rs.getString("nick"));
                 mensagem.setTexto(rs.getString("texto"));
                 mensagens.add(mensagem);
-            
+            }
+        }finally{
+            psmt.close();
+            rs.close();
+            con.close();
+       }
+    return mensagens;
     }        
 }
