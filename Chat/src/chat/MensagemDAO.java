@@ -11,5 +11,6 @@ package chat;
  * @author a1320726
  */
 public class MensagemDAO {
-    
+    public void inserir(){
+    }
 }
