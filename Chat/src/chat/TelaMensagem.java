@@ -6,7 +6,11 @@
 
 package chat;
 
+import static java.util.Collections.list;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,16 +35,12 @@ private String nickUsuario;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfMensagem = new javax.swing.JTextField();
-        spTexto = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        tfTexto = new javax.swing.JTextField();
         btEnviar = new javax.swing.JButton();
         btAtualizar = new javax.swing.JButton();
         lbTitulo = new javax.swing.JLabel();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        spTexto.setViewportView(jTextArea1);
+        spMensagem = new javax.swing.JScrollPane();
+        taMensagem = new javax.swing.JTextArea();
 
         btEnviar.setText("Enviar");
         btEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +58,10 @@ private String nickUsuario;
 
         lbTitulo.setText("Tela de Mensagem");
 
+        taMensagem.setColumns(20);
+        taMensagem.setRows(5);
+        spMensagem.setViewportView(taMensagem);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,60 +70,81 @@ private String nickUsuario;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spMensagem)
+                            .addComponent(tfTexto))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(22, 22, 22)
                                 .addComponent(btEnviar))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(spTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btAtualizar))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addComponent(lbTitulo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(lbTitulo)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btAtualizar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEnviar)
-                    .addComponent(tfMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addComponent(lbTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btAtualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfTexto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btEnviar, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
-        
+        MensagemDAO mensagemDAO = new MensagemDAO();
         try{
           String nick = nickUsuario;
-          String texto = tfMensagem.getText();
-          Date data;
-          Mensagem mensagem = new Mensagem();
-          MensagemDAO mensagemDAO = new MensagemDAO();  
+          String texto = tfTexto.getText();
           
+          Mensagem mensagem = new Mensagem();
+          mensagem.setDate(new java.sql.Date(new java.util.Date().getTime()));
+          mensagem.setMensagem(texto);
+          mensagem.setNick(nick);
+          
+          mensagemDAO.Inserir(mensagem);
         }
         
         catch(Exception e){
-            
+            String alerta = "Não foi possivel enviar a sua mensagem.\nProblema com a conexão";
+            JOptionPane.showMessageDialog(null, alerta);
         }
     }//GEN-LAST:event_btEnviarActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+        MensagemDAO mensagemDAO = new MensagemDAO();
         try{
             
+           List mensagens = mensagemDAO.ObterMensagem();
+           
+           String corpoMensagens;
+           
+           Iterator i = mensagens.iterator();
+           
+           while(i.hasNext()){
+               Mensagem msg = (Mensagem) i.next();
+                corpoMensagens += "\n" + msg.getNick() + ": " + msg.getMensagem();
+           }
+           
+           taMensagem.setText(corpoMensagens);
         }
         catch(Exception e){
-            
+            String alerta = "Não foi possivel atualizar.\n Problema com a conexão";
+            JOptionPane.showMessageDialog(null, alerta);
         }
     }//GEN-LAST:event_btAtualizarActionPerformed
 
@@ -127,9 +152,9 @@ private String nickUsuario;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btEnviar;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbTitulo;
-    private javax.swing.JScrollPane spTexto;
-    private javax.swing.JTextField tfMensagem;
+    private javax.swing.JScrollPane spMensagem;
+    private javax.swing.JTextArea taMensagem;
+    private javax.swing.JTextField tfTexto;
     // End of variables declaration//GEN-END:variables
 }
