@@ -113,7 +113,7 @@ private String nickUsuario;
           
           Mensagem mensagem = new Mensagem();
           mensagem.setDate(new java.sql.Date(new java.util.Date().getTime()));
-          mensagem.setMensagem(texto);
+          mensagem.setTexto(texto);
           mensagem.setNick(nick);
           
           mensagemDAO.Inserir(mensagem);
@@ -129,15 +129,15 @@ private String nickUsuario;
         MensagemDAO mensagemDAO = new MensagemDAO();
         try{
             
-           List mensagens = mensagemDAO.ObterMensagem();
+           List mensagens = mensagemDAO.ObterMensagens();
            
-           String corpoMensagens;
+           String corpoMensagens="";
            
            Iterator i = mensagens.iterator();
            
            while(i.hasNext()){
                Mensagem msg = (Mensagem) i.next();
-                corpoMensagens += "\n" + msg.getNick() + ": " + msg.getMensagem();
+                corpoMensagens += "\n" + msg.getNick() + ": " + msg.getTexto();
            }
            
            taMensagem.setText(corpoMensagens);

@@ -32,9 +32,14 @@ public class ConnectionFactory {
     static Connection getFirebirdConnection() {
         
         Connection connection = null;
-        try {
+        try {            
+            String url="jdbc:postgresql://192.168.1.29:5432/chat2";
+            String usuario="postgres";
+            String senha="";
+            
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://192.168.1.29:5432/chat2","postgres","");
+            connection = DriverManager.getConnection(url,usuario,senha);
+            
         }catch(Exception e){
            e.printStackTrace();
            JOptionPane.showMessageDialog(null,"Erro ao conectar com o banco de dados");
