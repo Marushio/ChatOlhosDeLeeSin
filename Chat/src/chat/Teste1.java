@@ -7,14 +7,14 @@
 package chat;
 
 import java.sql.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author a1320548
+ * @DiogenesGalileu
  */
 public class Teste1 {
 
@@ -37,22 +37,16 @@ public class Teste1 {
         }
         try {
             List mensagens = mensagemDAO.ObterMensagens();
-            
-            
+            String historicoMensagens = new String();
+            Iterator i = mensagens.iterator();
+            while(i.hasNext()){
+                Mensagem texto = (Mensagem) i.next();
+                historicoMensagens += "\n" + texto.getNick() + ": " + texto.getTexto();
+            }
+            System.out.println(historicoMensagens);
         } catch (Exception ex) {
             Logger.getLogger(Teste1.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Falha ao receber mensagem");
         }
     }    
 }
-/**try {
-            List mensagens = mensagemDao.SelectALL();
-            String textoMensagens = new String();
-            
-            Iterator i = mensagens.iterator();
-            while(i.hasNext()) {
-                Mensagem msg = (Mensagem) i.next();
-                textoMensagens += "\n" + msg.getNick() + ": " + msg.getMensagem();
-            }
-            jTxtAr_Historico.setText(textoMensagens);
-        }**/
