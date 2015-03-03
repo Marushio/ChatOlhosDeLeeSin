@@ -33,7 +33,7 @@ public class Teste1 {
             mensagemDAO.Inserir(mensagem);
         } catch (Exception ex) {
             Logger.getLogger(Teste1.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showInternalMessageDialog(null,"Falha no envio de mensagem");
+            JOptionPane.showMessageDialog(null,"Falha no envio de mensagem");
         }
         try {
             List mensagens = mensagemDAO.ObterMensagens();
