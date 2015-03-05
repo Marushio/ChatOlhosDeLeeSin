@@ -21,8 +21,11 @@ static String nickUsuario;
      * Creates new form MeuMessenger
      */
     public MeuMessenger() {
-         initComponents();
+         
+        initComponents();
         //Cria os panes
+        this.setLocation(600, 220);
+        
         JPanel telaNick = new TelaNick(); 
         JPanel telaMensagem = new TelaMensagem();
         JPanel cards;
@@ -43,6 +46,7 @@ static String nickUsuario;
         this.revalidate();
         this.repaint();
         
+        
     }
 
     /**
@@ -55,6 +59,8 @@ static String nickUsuario;
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 420));
+        setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +107,7 @@ static String nickUsuario;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {                
                     new MeuMessenger().setVisible(true);
+                  
             }
         });
     }
