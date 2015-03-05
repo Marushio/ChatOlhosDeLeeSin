@@ -36,7 +36,7 @@ public class ConnectionFactory {
             String url="jdbc:postgresql://localhost:5432/chat";
             /*String url="jdbc:postgresql://192.168.1.29:5432/chat2";*/
             String usuario="postgres";
-            String senha="";
+            String senha="0";
             
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url,usuario,senha);
