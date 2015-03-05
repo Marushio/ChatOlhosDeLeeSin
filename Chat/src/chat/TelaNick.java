@@ -6,7 +6,6 @@
 
 package chat;
 
-import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -19,10 +18,8 @@ public class TelaNick extends javax.swing.JPanel {
     /**
      * Creates new form telaNick
      */
-   
-    public TelaNick( ) {
+    public TelaNick() {
         initComponents();
-        
     }
 
     /**
@@ -85,17 +82,9 @@ public class TelaNick extends javax.swing.JPanel {
 
     private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
         // TODO add your handling code here:
-        MeuMessenger.nickUsuario =tfNick.getText();
-        tfNick.setText("");
-        //JPanel telaMensagem = new TelaMensagem(tfNick.getText());
-       // super.setContentPane(telaMensagem);
-        Container janela = this.getParent();
-        janela.remove(this); 
-        janela.revalidate();
-        janela.repaint();
-       // telaMensagem.show(true);
-        
-        
+        JFrame tela = new JFrame();
+        JPanel telaMensagem = new TelaMensagem(tfNick.getText());
+        tela.setContentPane(telaMensagem);
     }//GEN-LAST:event_btLogarActionPerformed
 
 

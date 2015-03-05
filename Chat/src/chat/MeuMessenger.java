@@ -6,8 +6,6 @@
 
 package chat;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -17,37 +15,16 @@ import javax.swing.JPanel;
  */
 public class MeuMessenger extends javax.swing.JFrame {
 Mensagem mensagem;
-
-static String nickUsuario;
-
     /**
      * Creates new form MeuMessenger
      */
     public MeuMessenger() {
-       
+        this.mensagem = mensagem;
         initComponents();
-        //Cria os panes
-        JPanel telaNick = new TelaNick(); 
-        JPanel telaMensagem = new TelaMensagem();
-        JPanel cards;
-        //Cria os card de panes
-        cards = new JPanel(new CardLayout());
-        //Adiciona os panes nos cards
-        cards.add(telaMensagem,"mensagem");
-        cards.add(telaNick,"Nicks"); 
-        // mostra os cards
-        CardLayout cl = (CardLayout)(cards.getLayout());
-        cl.show(cards,"mensagem");
-        this.setContentPane(cards);
+        JPanel telaNick = new TelaNick();
+        this.setContentPane(telaNick);
         this.revalidate();
         this.repaint();
-     
-        cl.show(cards,"Nicks");
-        this.setContentPane(cards);
-        this.revalidate();
-        this.repaint();
-        
-        
     }
 
     /**
@@ -104,11 +81,8 @@ static String nickUsuario;
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() { 
-                    
+            public void run() {                
                     new MeuMessenger().setVisible(true);
-                    
-                    
             }
         });
     }

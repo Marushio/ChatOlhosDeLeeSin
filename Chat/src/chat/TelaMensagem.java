@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  * @author a132067x
  */
 public class TelaMensagem extends javax.swing.JPanel {
-
+private String nickUsuario;
     /**
      * Creates new form telaMensagem
      */
-    public TelaMensagem(  ) {
-        
+    public TelaMensagem( String nickUsuario ) {
+        this.nickUsuario = nickUsuario;
         initComponents();
     }
 
@@ -108,7 +108,7 @@ public class TelaMensagem extends javax.swing.JPanel {
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
         MensagemDAO mensagemDAO = new MensagemDAO();
         try{
-          String nick = MeuMessenger.nickUsuario;
+          String nick = nickUsuario;
           String texto = tfTexto.getText();
           
           Mensagem mensagem = new Mensagem();
