@@ -117,6 +117,7 @@ public class TelaMensagem extends javax.swing.JPanel {
           mensagem.setNick(nick);
           
           mensagemDAO.Inserir(mensagem);
+          this.atualizarMensagensTrocadas();
         }
         
         catch(Exception e){
@@ -127,6 +128,10 @@ public class TelaMensagem extends javax.swing.JPanel {
     }//GEN-LAST:event_btEnviarActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+        this.atualizarMensagensTrocadas();
+    }//GEN-LAST:event_btAtualizarActionPerformed
+
+    private void atualizarMensagensTrocadas(){
         MensagemDAO mensagemDAO = new MensagemDAO();
         try{
             
@@ -147,8 +152,8 @@ public class TelaMensagem extends javax.swing.JPanel {
             String alerta = "Não foi possivel atualizar.\n Problema com a conexão";
             JOptionPane.showMessageDialog(null, alerta);
         }
-    }//GEN-LAST:event_btAtualizarActionPerformed
-
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtualizar;
