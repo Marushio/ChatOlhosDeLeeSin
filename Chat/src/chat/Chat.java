@@ -1,4 +1,7 @@
 package chat;
+
+import testes.Teste1;
+
 /**
  *
  * @author a1320548
