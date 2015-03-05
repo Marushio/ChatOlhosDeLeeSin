@@ -123,6 +123,7 @@ public class TelaMensagem extends javax.swing.JPanel {
             String alerta = "Não foi possivel enviar a sua mensagem.\nProblema com a conexão";
             JOptionPane.showMessageDialog(null, alerta);
         }
+        tfTexto.setText("");
     }//GEN-LAST:event_btEnviarActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
