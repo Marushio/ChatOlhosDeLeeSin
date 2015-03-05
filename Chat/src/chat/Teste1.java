@@ -41,7 +41,7 @@ public class Teste1 {
             Iterator i = mensagens.iterator();
             while(i.hasNext()){
                 Mensagem texto = (Mensagem) i.next();
-                historicoMensagens += "\n" + texto.getNick() + ": " + texto.getTexto();
+                historicoMensagens += "\n" + texto.getNick() + " " + texto.getDate() + ": " + texto.getTexto();
             }
             System.out.println(historicoMensagens);
         } catch (Exception ex) {
