@@ -25,9 +25,9 @@ public class Teste1 {
     Resultado esperado: Uma mensagem identica a enviada.*/
     public Teste1() {
         Mensagem mensagem = new Mensagem();
-        mensagem.setDate(Date.valueOf("2015-02-12"));
-        mensagem.setTexto("Mensagem de teste");
-        mensagem.setNick("Tester");
+        mensagem.setDate(Date.valueOf("2015-03-01"));
+        mensagem.setTexto("MOla mundo");
+        mensagem.setNick("maru");
         MensagemDAO mensagemDAO = new MensagemDAO();
         try {
             mensagemDAO.Inserir(mensagem);
