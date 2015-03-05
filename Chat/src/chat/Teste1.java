@@ -25,18 +25,33 @@ public class Teste1 {
     Resultado esperado: Uma mensagem identica a enviada.*/
     public Teste1() {
         Mensagem mensagem = new Mensagem();
-        Usuario user = new Usuario();
+        
+        Usuario user2 = new Usuario();
+      
+        
+       // user2.setLogin("Maru");
+        //user2.setSenha("123");
+        
         mensagem.setDate(Date.valueOf("2015-02-12"));
         mensagem.setTexto("Mensagem de teste");
         mensagem.setNick("Tester");
         
         MensagemDAO mensagemDAO = new MensagemDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         try {
-            mensagemDAO.Inserir(mensagem);
+            System.out.println("foi ate aqui1 ");
+            user2 = usuarioDAO.obterUsuario("Maru");
+            System.out.println("foi ate aqui 2");
+            System.out.println(user2.getLogin());
             
-        } catch (Exception ex) {
-            Logger.getLogger(Teste1.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null,"Falha no envio de mensagem");
+            
+        } catch ( NullPointerException e) {
+            
+            JOptionPane.showMessageDialog(null," cadastro dse user");
+        
+        } catch ( Exception ex) {
+            
+            JOptionPane.showMessageDialog(null," cadastro dse user");
         }
         try {
             List mensagens = mensagemDAO.ObterMensagens();

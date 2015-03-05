@@ -61,45 +61,5 @@ public class MensagemDAO {
        }
     return mensagens;
     }        
-     public void InserirUsuario(Usuario user)throws Exception{
-        Connection con = ConnectionFactory.getFirebirdConnection();
-        PreparedStatement psmt = null;
-        try{
-            StringBuffer sql = new StringBuffer();
-            sql.append("insert into usuario(login,senha)");
-            sql.append("values(?,?)");
-            psmt = con.prepareStatement(sql.toString());
-            
-            psmt.setString(1,user.getLogin());
-            psmt.setString(2, user.getSenha());
-            
-            psmt.execute();            
-        }
-        finally{
-            psmt.close();
-            con.close();
-        }
-    }  
-     public boolean Login(Usuario user)throws Exception{
-        boolean verificar=false;
-        Connection con = ConnectionFactory.getFirebirdConnection();
-        ResultSet rs = null;
-        PreparedStatement psmt = null;
-        
-        String sql = "select * from usuario where (login = ?) and (senha = ?)";
-        psmt.setString(1, user.getLogin());
-        psmt.setString(2, user.getSenha());
-        
-        
-        try{
-            psmt = con.prepareStatement(sql);
-            rs = psmt.executeQuery(); 
-            verificar=true;         
-        }finally{
-            psmt.close();
-            rs.close();
-            con.close();
-       }
-    return verificar;
-    }  
+    
 }
