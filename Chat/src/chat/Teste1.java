@@ -25,12 +25,15 @@ public class Teste1 {
     Resultado esperado: Uma mensagem identica a enviada.*/
     public Teste1() {
         Mensagem mensagem = new Mensagem();
+        Usuario user = new Usuario();
         mensagem.setDate(Date.valueOf("2015-02-12"));
         mensagem.setTexto("Mensagem de teste");
         mensagem.setNick("Tester");
+        
         MensagemDAO mensagemDAO = new MensagemDAO();
         try {
             mensagemDAO.Inserir(mensagem);
+            
         } catch (Exception ex) {
             Logger.getLogger(Teste1.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"Falha no envio de mensagem");

@@ -81,21 +81,20 @@ public class MensagemDAO {
         }
     }  
      public boolean Login(Usuario user)throws Exception{
-         boolean verificar=false;
+        boolean verificar=false;
         Connection con = ConnectionFactory.getFirebirdConnection();
         ResultSet rs = null;
         PreparedStatement psmt = null;
+        
         String sql = "select * from usuario where (login = ?) and (senha = ?)";
         psmt.setString(1, user.getLogin());
         psmt.setString(2, user.getSenha());
-        Usuario usuario = new Usuario(); 
+        
         
         try{
             psmt = con.prepareStatement(sql);
             rs = psmt.executeQuery(); 
-                usuario.setLogin(rs.getString("login"));
-                usuario.setSenha(rs.getString("senha"));
-            
+            verificar=true;         
         }finally{
             psmt.close();
             rs.close();
