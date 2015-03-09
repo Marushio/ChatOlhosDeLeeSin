@@ -44,19 +44,22 @@ public class Teste1 {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         try {
             System.out.println("foi ate aqui1 ");
-            user2 = usuarioDAO.obterUsuario("Maru");
+            user2 = usuarioDAO.obterUsuario("maru");
             System.out.println("foi ate aqui 2");
             System.out.println(user2.getLogin());
+            System.out.println(user2.getSenha());
             
             
-        } catch ( NullPointerException e) {
+        } catch ( Exception e) {
             
-            JOptionPane.showMessageDialog(null," cadastro dse user");
-        
-        } catch ( Exception ex) {
-            
-            JOptionPane.showMessageDialog(null," cadastro dse user");
+            JOptionPane.showMessageDialog(null,e);
         }
+     
+        //} catch ( Exception ex) {
+            
+          //  JOptionPane.showMessageDialog(null,"erro ao conectar com o banco dedados");
+       // }
+            /**
         try {
             List mensagens = mensagemDAO.ObterMensagens();
             String historicoMensagens = new String();
@@ -70,5 +73,6 @@ public class Teste1 {
             Logger.getLogger(Teste1.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Falha ao receber mensagem");
         }
+          */         
     }    
 }
