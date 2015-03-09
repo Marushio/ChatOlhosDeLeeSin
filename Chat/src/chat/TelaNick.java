@@ -101,30 +101,25 @@ public class TelaNick extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
-        // TODO add your handling code here:
+       
         MeuMessenger.usuario.setLogin(tfNick.getText());
         MeuMessenger.usuario.setSenha(pfSenha.getText());
         tfNick.setText("");
         pfSenha.setText("");
-        //JPanel telaMensagem = new TelaMensagem(tfNick.getText());
-       // super.setContentPane(telaMensagem);
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Usuario user ;
         try{
-            System.out.println("here-1");
             user = usuarioDAO.obterUsuario(MeuMessenger.usuario.getLogin());
-            System.out.println("here-2");
-          //  System.out.println("log= "+usuarioDAO.obterUsuario("maru").getLogin());
-            System.out.println("here3");
-           // if(MeuMessenger.usuario.getSenha().equals(user.getSenha()) ){
-               Container janela = this.getParent();
-              janela.remove(this); 
+            if(MeuMessenger.usuario.getSenha().equals(user.getSenha()) ){
+                Container janela = this.getParent();
+                janela.remove(this); 
                 janela.revalidate();
                 janela.repaint();
-          //  }    
-       }catch(Exception e ){
-           System.out.println(e);
-          //  JOptionPane.showMessageDialog(e,"Loguin Inexistente ou senha errados","Erro",0);
+            }else{
+                throw new Exception();
+            }    
+        }catch(Exception e ){
+            JOptionPane.showMessageDialog(null,"Login Inexistente ou senha errados","Erro",0);
             
         }
        

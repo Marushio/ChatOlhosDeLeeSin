@@ -142,12 +142,12 @@ public class TelaMensagem extends javax.swing.JPanel {
 
     private void jbNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNewUserActionPerformed
         JPanel newuser = new NovoUsuario();
-        //JScrollPane jsc = new JScrollPane(telaCadastroProduto, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane jsc = new JScrollPane(newuser, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         //this.resize(395, 310);
-       // this.setContentPane(jsc);
-        newuser.show();
-        //this.revalidate();
-        //this.repaint();
+       // MeuMessenger.setContentPane();
+        //newuser.show();
+        this.revalidate();
+        this.repaint();
         
     }//GEN-LAST:event_jbNewUserActionPerformed
 
