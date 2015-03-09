@@ -10,6 +10,7 @@ import static java.util.Collections.list;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -141,14 +142,10 @@ public class TelaMensagem extends javax.swing.JPanel {
     }//GEN-LAST:event_btAtualizarActionPerformed
 
     private void jbNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNewUserActionPerformed
-        JPanel newuser = new NovoUsuario();
-        JScrollPane jsc = new JScrollPane(newuser, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        //this.resize(395, 310);
-       // MeuMessenger.setContentPane();
-        //newuser.show();
-        this.revalidate();
-        this.repaint();
+        JFrame newuser = new NewUser();
+        newuser.show();
         
+       
     }//GEN-LAST:event_jbNewUserActionPerformed
 
     private void atualizarMensagensTrocadas(){

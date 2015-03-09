@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Marcio
  */
-public class NovoUsuario extends javax.swing.JPanel {
+public class NovoUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form NovoUsuario
@@ -114,15 +114,15 @@ public class NovoUsuario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Este loguin Ja existe, Tente outro","Erro",0);
                
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Erro de conexão ","Erro",0);
+          
         }
         if (ok = true){
-            try{ 
+          try{ 
                usuarioDAO.InserirUsuario(novouser);
                Container janela = this.getParent();
-              janela.remove(this); 
-              janela.revalidate();
-              janela.repaint(); 
+               janela.remove(this); 
+               janela.revalidate();
+               janela.repaint(); 
           }catch(Exception e){
                JOptionPane.showMessageDialog(null,"Erro de conexão ","Erro",0);
           }
