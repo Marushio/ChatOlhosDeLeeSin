@@ -16,7 +16,8 @@ import javax.swing.JPanel;
  */
 public class MeuMessenger extends javax.swing.JFrame {
 Mensagem mensagem;
-static String nickUsuario;
+static Usuario usuario = new Usuario();
+
     /**
      * Creates new form MeuMessenger
      */

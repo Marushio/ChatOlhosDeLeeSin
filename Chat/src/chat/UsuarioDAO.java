@@ -35,7 +35,7 @@ public class UsuarioDAO {
         }
     }  
      public Usuario obterUsuario(String login)throws Exception{
-       System.out.println("FOII");
+        System.out.println("here1"+login);
         Usuario user=new Usuario();
         Connection con = ConnectionFactory.getFirebirdConnection();
         ResultSet rs = null;
@@ -43,11 +43,8 @@ public class UsuarioDAO {
         StringBuffer sql = new StringBuffer();
         sql.append("select * from usuario");
         sql.append("where login = ? ");
-        System.out.println(login);
         psmt.setString(1, login);
-       
-        
-        
+        System.out.println("here1");
         try{
             psmt = con.prepareStatement(sql.toString());
             rs = psmt.executeQuery(); 
@@ -58,6 +55,7 @@ public class UsuarioDAO {
             rs.close();
             con.close();
        }
+        System.out.println("here2");
     return user;
     }  
 }

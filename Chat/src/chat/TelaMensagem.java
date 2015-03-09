@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -41,6 +43,7 @@ public class TelaMensagem extends javax.swing.JPanel {
         lbTitulo = new javax.swing.JLabel();
         spMensagem = new javax.swing.JScrollPane();
         taMensagem = new javax.swing.JTextArea();
+        jbNewUser = new javax.swing.JButton();
 
         btEnviar.setText("Enviar");
         btEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +66,13 @@ public class TelaMensagem extends javax.swing.JPanel {
         taMensagem.setRows(5);
         spMensagem.setViewportView(taMensagem);
 
+        jbNewUser.setText("NovoUsuario");
+        jbNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNewUserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,11 +87,12 @@ public class TelaMensagem extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbNewUser, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(lbTitulo)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,9 +100,12 @@ public class TelaMensagem extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(spMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbNewUser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,7 +117,7 @@ public class TelaMensagem extends javax.swing.JPanel {
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
         MensagemDAO mensagemDAO = new MensagemDAO();
         try{
-          String nick = MeuMessenger.nickUsuario;
+          String nick = MeuMessenger.usuario.getLogin();
           String texto = tfTexto.getText();
           
           Mensagem mensagem = new Mensagem();
@@ -125,6 +139,17 @@ public class TelaMensagem extends javax.swing.JPanel {
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         this.atualizarMensagensTrocadas();
     }//GEN-LAST:event_btAtualizarActionPerformed
+
+    private void jbNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNewUserActionPerformed
+        JPanel newuser = new NovoUsuario();
+        //JScrollPane jsc = new JScrollPane(telaCadastroProduto, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        //this.resize(395, 310);
+       // this.setContentPane(jsc);
+        newuser.show();
+        //this.revalidate();
+        //this.repaint();
+        
+    }//GEN-LAST:event_jbNewUserActionPerformed
 
     private void atualizarMensagensTrocadas(){
         MensagemDAO mensagemDAO = new MensagemDAO();
@@ -153,6 +178,7 @@ public class TelaMensagem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btEnviar;
+    private javax.swing.JButton jbNewUser;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JScrollPane spMensagem;
     private javax.swing.JTextArea taMensagem;

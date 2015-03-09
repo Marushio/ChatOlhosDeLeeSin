@@ -8,6 +8,7 @@ package chat;
 
 import java.awt.Container;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -36,6 +37,8 @@ public class TelaNick extends javax.swing.JPanel {
         btLogar = new javax.swing.JButton();
         tfNick = new javax.swing.JTextField();
         lbNick = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        pfSenha = new javax.swing.JPasswordField();
 
         lbTitulo.setText("Tela de Login");
 
@@ -46,7 +49,15 @@ public class TelaNick extends javax.swing.JPanel {
             }
         });
 
+        tfNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNickActionPerformed(evt);
+            }
+        });
+
         lbNick.setText("Nick.:");
+
+        jLabel1.setText("Senha:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -55,51 +66,93 @@ public class TelaNick extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(btLogar))
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbNick)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btLogar)
+                            .addComponent(tfNick, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pfSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbNick)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfNick, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(195, 195, 195)
                         .addComponent(lbTitulo)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(114, 126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbNick, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfNick, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfNick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbNick))
+                .addGap(18, 18, 18)
                 .addComponent(btLogar)
-                .addContainerGap())
+                .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
         // TODO add your handling code here:
-        MeuMessenger.nickUsuario =tfNick.getText();
+        MeuMessenger.usuario.setLogin(tfNick.getText());
+        MeuMessenger.usuario.setSenha(pfSenha.getText());
         tfNick.setText("");
+        pfSenha.setText("");
         //JPanel telaMensagem = new TelaMensagem(tfNick.getText());
        // super.setContentPane(telaMensagem);
-        Container janela = this.getParent();
-        janela.remove(this); 
-        janela.revalidate();
-        janela.repaint();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Usuario user ;
+        try{
+            System.out.println("here-1");
+            user = usuarioDAO.obterUsuario(MeuMessenger.usuario.getLogin());
+            System.out.println("here-2");
+          //  System.out.println("log= "+usuarioDAO.obterUsuario("maru").getLogin());
+            System.out.println("here3");
+           // if(MeuMessenger.usuario.getSenha().equals(user.getSenha()) ){
+               Container janela = this.getParent();
+              janela.remove(this); 
+                janela.revalidate();
+                janela.repaint();
+          //  }    
+       }catch(Exception e ){
+           System.out.println(e);
+          //  JOptionPane.showMessageDialog(e,"Loguin Inexistente ou senha errados","Erro",0);
+            
+        }
+       
+       
+        
+        
+        
+        
        // telaMensagem.show(true);
         
     }//GEN-LAST:event_btLogarActionPerformed
 
+    private void tfNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNickActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNickActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbNick;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JPasswordField pfSenha;
     private javax.swing.JTextField tfNick;
     // End of variables declaration//GEN-END:variables
+
+    
+
+   
+   
 }
