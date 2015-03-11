@@ -8,8 +8,6 @@ package testes;
 
 import chat.Mensagem;
 import chat.MensagemDAO;
-import chat.Usuario;
-import chat.UsuarioDAO;
 import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
