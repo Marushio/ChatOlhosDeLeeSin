@@ -20,46 +20,25 @@ import javax.swing.JOptionPane;
 /**
  * @DiogenesGalileu
  */
-public class Teste1 {
+public class TesteMensagemDAO1 {
 
     /**Caso de teste 1**/
-    /*Criar um objeto do tipo mensagem, escrevê-la no banco de dados usando o metodo
-    MensagemDAO.InserirNovaMensagem(). Utilizar o método MensagemDAO.ObterMensagens
-    para obter um eco da mensagem e compara-la com o objeto mensagem que foi enviado
+    /*Criar um objeto do tipo mensagem, escrevê-la no banco de dados usando o metodo MensagemDAO.InserirNovaMensagem().
+    Utilizar o método MensagemDAO.ObterMensagens para obter um eco da mensagem e compara-la com o objeto mensagem que foi enviado.
     Resultado esperado: Uma mensagem identica a enviada.*/
-    public Teste1() {
+    public TesteMensagemDAO1() {
         Mensagem mensagem = new Mensagem();
-        
-        Usuario user2 = new Usuario();
-      
-        
-       // user2.setLogin("Maru");
-        //user2.setSenha("123");
-        
         mensagem.setDate(Date.valueOf("2015-02-12"));
         mensagem.setTexto("Mensagem de teste");
-        mensagem.setNick("Tester");
-        
+        mensagem.setNick("Tester");        
         MensagemDAO mensagemDAO = new MensagemDAO();
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        
         try {
-            System.out.println("foi ate aqui1 ");
-            user2 = usuarioDAO.obterUsuario("maru");
-            System.out.println("foi ate aqui 2");
-            System.out.println(user2.getLogin());
-            System.out.println(user2.getSenha());
-            
-            
-        } catch ( Exception e) {
-            
-            JOptionPane.showMessageDialog(null,e);
+            mensagemDAO.Inserir(mensagem);
+        } catch (Exception e) {
+            System.out.println("Falha ao inserir mensagem.");
         }
-     
-        //} catch ( Exception ex) {
-            
-          //  JOptionPane.showMessageDialog(null,"erro ao conectar com o banco dedados");
-       // }
-            /**
+        
         try {
             List mensagens = mensagemDAO.ObterMensagens();
             String historicoMensagens = new String();
@@ -70,9 +49,8 @@ public class Teste1 {
             }
             System.out.println(historicoMensagens);
         } catch (Exception ex) {
-            Logger.getLogger(Teste1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TesteMensagemDAO1.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Falha ao receber mensagem");
-        }
-          */         
+        }      
     }    
 }

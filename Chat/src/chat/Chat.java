@@ -1,6 +1,6 @@
 package chat;
 
-import testes.Teste1;
+import testes.TesteMensagemDAO1;
 
 /**
  *
@@ -12,7 +12,7 @@ public class Chat {
      */
     
     public static void main(String[] args) {
-        Teste1 teste1 = new Teste1();
+        TesteMensagemDAO1 teste1 = new TesteMensagemDAO1();
         
     }
 }

@@ -47,7 +47,7 @@ public class NovoUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Loguin/nick");
+        jLabel2.setText("Login/nick");
 
         jLabel3.setText("Senha");
 
@@ -58,8 +58,8 @@ public class NovoUsuario extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()

@@ -41,7 +41,7 @@ public class NewUser extends javax.swing.JFrame {
         Titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Titulo.setText("Cadastro de novo usuario");
 
-        jLabel2.setText("Loguin/nick");
+        jLabel2.setText("Login/nick");
 
         jLabel3.setText("Senha");
 
