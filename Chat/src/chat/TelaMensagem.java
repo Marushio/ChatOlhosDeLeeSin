@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
  * @author a132067x
  */
 public class TelaMensagem extends javax.swing.JPanel {
-    private int delay = 5000;
+    private int delay = 2000;
     private int interval = 1000;       
     Timer timer=new Timer();
     /**
