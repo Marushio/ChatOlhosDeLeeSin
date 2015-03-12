@@ -36,7 +36,7 @@ public class NewUser extends javax.swing.JFrame {
         pfNewsenha = new javax.swing.JPasswordField();
         jbCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Titulo.setText("Cadastro de novo usuario");
@@ -114,25 +114,17 @@ public class NewUser extends javax.swing.JFrame {
         Usuario novouser = new Usuario();
         novouser.setLogin(tfNewLogin.getText());
         novouser.setSenha(pfNewsenha.getText());
-        boolean ok = true;
-        String verificar;
+       
+        
         try{
-            verificar =usuarioDAO.obterUsuario(novouser.getLogin()).getLogin();
-            if(novouser.getLogin().equals(verificar)==true){
-                JOptionPane.showMessageDialog(null,"Usuario ja cadastrado ","Erro",0);
-                ok=false;
-            }
-        }catch(Exception e){
+            usuarioDAO.InserirUsuario(novouser);
+            JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso!","Usuario cadastrado",1); 
+            this.dispose();
             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Usuario ja cadastrado, Tente outro","Erro",0); 
         }
-        if (ok==true){
-            try{    
-                usuarioDAO.InserirUsuario(novouser);
-                this.dispose();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Usuario não cadastrado ","Erro",0);
-            }   
-        }
+        
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
