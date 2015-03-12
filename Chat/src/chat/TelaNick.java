@@ -39,6 +39,7 @@ public class TelaNick extends javax.swing.JPanel {
         lbNick = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         pfSenha = new javax.swing.JPasswordField();
+        NovoUsuario = new javax.swing.JButton();
 
         lbTitulo.setText("Tela de Login");
 
@@ -59,6 +60,13 @@ public class TelaNick extends javax.swing.JPanel {
 
         jLabel1.setText("Senha:");
 
+        NovoUsuario.setText("NovoUsuario");
+        NovoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovoUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,7 +80,11 @@ public class TelaNick extends javax.swing.JPanel {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btLogar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(NovoUsuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btLogar))
                             .addComponent(tfNick, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pfSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
@@ -95,7 +107,9 @@ public class TelaNick extends javax.swing.JPanel {
                             .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbNick))
                 .addGap(18, 18, 18)
-                .addComponent(btLogar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btLogar)
+                    .addComponent(NovoUsuario))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -136,8 +150,14 @@ public class TelaNick extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNickActionPerformed
 
+    private void NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoUsuarioActionPerformed
+        JFrame newuser = new NewUser();
+        newuser.show();
+    }//GEN-LAST:event_NovoUsuarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton NovoUsuario;
     private javax.swing.JButton btLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbNick;

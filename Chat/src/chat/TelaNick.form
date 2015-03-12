@@ -26,7 +26,12 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btLogar" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="NovoUsuario" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btLogar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="tfNick" alignment="0" max="32767" attributes="0"/>
                           <Component id="pfSenha" alignment="0" pref="206" max="32767" attributes="0"/>
                       </Group>
@@ -58,7 +63,10 @@
                   <Component id="lbNick" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btLogar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btLogar" min="-2" max="-2" attributes="0"/>
+                  <Component id="NovoUsuario" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="117" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -94,6 +102,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pfSenha">
+    </Component>
+    <Component class="javax.swing.JButton" name="NovoUsuario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="NovoUsuario"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovoUsuarioActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
