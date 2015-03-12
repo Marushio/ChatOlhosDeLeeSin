@@ -40,7 +40,7 @@ public class Mensagem implements Comparable{
     public void setDate(Date date) {
         this.date = date;
     }
-    @Override
+   // @Override
     public int compareTo(Object t) {
         Mensagem msg2 = (Mensagem) t;
         
@@ -48,7 +48,7 @@ public class Mensagem implements Comparable{
             return this.texto.compareTo(msg2.getTexto());
         else return this.date.compareTo(msg2.getDate());
     }
-    @Override
+   // @Override
     public boolean equals(Object t){
          Mensagem msg2 = (Mensagem) t;
          if(this.date.equals(msg2.getDate()) &&

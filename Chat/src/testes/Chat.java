@@ -1,4 +1,4 @@
-package chat;
+package testes;
 
 import testes.TesteMensagemDAO1;
 import testes.TesteMensagemDAO2;
