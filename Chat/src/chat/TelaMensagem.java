@@ -10,6 +10,8 @@ import static java.util.Collections.list;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,13 +22,24 @@ import javax.swing.JScrollPane;
  * @author a132067x
  */
 public class TelaMensagem extends javax.swing.JPanel {
-
+    private int delay = 5000;
+    private int interval = 1000;       
+    Timer timer=new Timer();
     /**
      * Creates new form telaMensagem
      */
-    public TelaMensagem(  ) {
-        
+    public TelaMensagem() {
         initComponents();
+        timer.scheduleAtFixedRate(new TimerTask(){    
+        
+        public void run(){
+            atualizarMensagensTrocadas();
+           }
+         },delay,interval);
+               
+        
+        
+                
     }
 
     /**
@@ -102,7 +115,7 @@ public class TelaMensagem extends javax.swing.JPanel {
                 .addGap(59, 59, 59))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
         MensagemDAO mensagemDAO = new MensagemDAO();
         try{
@@ -128,8 +141,11 @@ public class TelaMensagem extends javax.swing.JPanel {
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         this.atualizarMensagensTrocadas();
     }//GEN-LAST:event_btAtualizarActionPerformed
-
+    
     private void atualizarMensagensTrocadas(){
+        
+            
+        
         MensagemDAO mensagemDAO = new MensagemDAO();
         try{
             
@@ -150,7 +166,8 @@ public class TelaMensagem extends javax.swing.JPanel {
             String alerta = "Não foi possivel atualizar.\n Problema com a conexão";
             JOptionPane.showMessageDialog(null, alerta);
         }
-    
+       
+      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
