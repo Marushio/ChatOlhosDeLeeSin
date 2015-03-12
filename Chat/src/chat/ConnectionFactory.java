@@ -34,11 +34,11 @@ public class ConnectionFactory {
         
         Connection connection = null;
         try {            
-             //String url="jdbc:mysql://192.168.1.28:3306/chat";
-            //String usuario="root";
+            String url="jdbc:mysql://192.168.1.28:3306/chat";
+            String usuario="root";
             
-            String url="jdbc:postgresql://localhost:5432/chat";
-            String usuario="postgres";
+            //String url="jdbc:postgresql://localhost:5432/chat";
+            //String usuario="postgres";
             String senha="";
             
             //Class.forName("org.postgresql.Driver");

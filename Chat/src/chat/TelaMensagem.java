@@ -124,7 +124,7 @@ public class TelaMensagem extends javax.swing.JPanel {
           Mensagem mensagem = new Mensagem();
           mensagem.setDate(new java.sql.Date(new java.util.Date().getTime()));
           mensagem.setTexto(texto);
-          mensagem.setNick(nick);
+          mensagem.setUsuario(MeuMessenger.usuario);
           
           mensagemDAO.Inserir(mensagem);
           this.atualizarMensagensTrocadas();
@@ -160,7 +160,7 @@ public class TelaMensagem extends javax.swing.JPanel {
            
            while(i.hasNext()){
                Mensagem msg = (Mensagem) i.next();
-                corpoMensagens += "\n" + msg.getNick() + ": " + msg.getTexto();
+                corpoMensagens += "\n" + msg.getUsuario().getLogin() + ": " + msg.getTexto();
            }
            
            taMensagem.setText(corpoMensagens);
