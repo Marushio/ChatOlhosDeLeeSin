@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * @author a132067x
  */
 public class MeuMessenger extends javax.swing.JFrame {
-Mensagem mensagem;
+
 static Usuario usuario = new Usuario();
 
     /**
