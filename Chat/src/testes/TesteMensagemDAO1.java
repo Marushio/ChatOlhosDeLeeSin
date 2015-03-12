@@ -8,6 +8,7 @@ package testes;
 
 import chat.Mensagem;
 import chat.MensagemDAO;
+import chat.Usuario;
 import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -26,9 +27,12 @@ public class TesteMensagemDAO1 {
     Resultado esperado: Uma mensagem identica a enviada.*/
     public TesteMensagemDAO1() {
         Mensagem mensagem = new Mensagem();
+         Usuario usuario= new Usuario();
+         
         mensagem.setDate(Date.valueOf("2015-02-12"));
         mensagem.setTexto("Mensagem de teste");
-        mensagem.setNick("Tester");        
+        usuario.setLogin("Tester");
+        mensagem.setUsuario(usuario);    
         MensagemDAO mensagemDAO = new MensagemDAO();
         
         try {
@@ -43,7 +47,7 @@ public class TesteMensagemDAO1 {
             Iterator i = mensagens.iterator();
             while(i.hasNext()){
                 Mensagem texto = (Mensagem) i.next();
-                historicoMensagens += "\n" + texto.getNick() + " " + texto.getDate() + ": " + texto.getTexto();
+                historicoMensagens += "\n" + texto.getUsuario().getLogin()+ " " + texto.getDate() + ": " + texto.getTexto();
             }
             System.out.println(historicoMensagens);
         } catch (Exception ex) {
