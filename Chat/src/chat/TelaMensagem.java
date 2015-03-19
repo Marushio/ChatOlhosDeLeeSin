@@ -8,6 +8,7 @@ package chat;
 
 //import static java.util.Collections.list;
 //import java.util.Date;
+import java.awt.event.ActionEvent;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
@@ -56,22 +57,20 @@ public class TelaMensagem extends javax.swing.JPanel {
 
         tfTexto = new javax.swing.JTextField();
         btEnviar = new javax.swing.JButton();
-        btAtualizar = new javax.swing.JButton();
         lbTitulo = new javax.swing.JLabel();
         spMensagem = new javax.swing.JScrollPane();
         taMensagem = new javax.swing.JTextArea();
+
+        tfTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfTextoKeyPressed(evt);
+            }
+        });
 
         btEnviar.setText("Enviar");
         btEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEnviarActionPerformed(evt);
-            }
-        });
-
-        btAtualizar.setText("Atualizar");
-        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtualizarActionPerformed(evt);
             }
         });
 
@@ -94,9 +93,7 @@ public class TelaMensagem extends javax.swing.JPanel {
                             .addComponent(spMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                             .addComponent(tfTexto))
                         .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(lbTitulo)))
@@ -108,9 +105,7 @@ public class TelaMensagem extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(spMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(spMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,9 +136,11 @@ public class TelaMensagem extends javax.swing.JPanel {
         tfTexto.setText("");
     }//GEN-LAST:event_btEnviarActionPerformed
 
-    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
-        this.atualizarMensagensTrocadas();
-    }//GEN-LAST:event_btAtualizarActionPerformed
+    private void tfTextoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTextoKeyPressed
+        if (evt.getKeyChar() == '\n') {
+            btEnviarActionPerformed(new ActionEvent(this, 0, ""));
+        }
+    }//GEN-LAST:event_tfTextoKeyPressed
     
     public void atualizarMensagensTrocadas(){
         
@@ -174,7 +171,6 @@ public class TelaMensagem extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btEnviar;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JScrollPane spMensagem;

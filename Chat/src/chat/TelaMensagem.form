@@ -25,10 +25,7 @@
                           <Component id="tfTexto" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btAtualizar" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="btEnviar" min="-2" pref="90" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btEnviar" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
@@ -45,10 +42,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="lbTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="spMensagem" min="-2" pref="222" max="-2" attributes="0"/>
-                  <Component id="btAtualizar" min="-2" pref="37" max="-2" attributes="0"/>
-              </Group>
+              <Component id="spMensagem" min="-2" pref="222" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfTexto" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
@@ -61,6 +55,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="tfTexto">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfTextoKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btEnviar">
       <Properties>
@@ -68,14 +65,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEnviarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btAtualizar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Atualizar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAtualizarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbTitulo">
