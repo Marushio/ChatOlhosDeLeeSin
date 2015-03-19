@@ -7,6 +7,7 @@
 package chat;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -55,10 +56,21 @@ public class TelaNick extends javax.swing.JPanel {
                 tfNickActionPerformed(evt);
             }
         });
+        tfNick.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfNickKeyPressed(evt);
+            }
+        });
 
         lbNick.setText("Nick.:");
 
         jLabel1.setText("Senha:");
+
+        pfSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pfSenhaKeyPressed(evt);
+            }
+        });
 
         NovoUsuario.setText("NovoUsuario");
         NovoUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -136,16 +148,11 @@ public class TelaNick extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Login Inexistente ou senha errados","Erro",0);
             
         }
-       
-       
-        
-        
-        
-        
+      
        // telaMensagem.show(true);
         
     }//GEN-LAST:event_btLogarActionPerformed
-
+ 
     private void tfNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNickActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNickActionPerformed
@@ -155,6 +162,21 @@ public class TelaNick extends javax.swing.JPanel {
         newuser.show();
     }//GEN-LAST:event_NovoUsuarioActionPerformed
 
+    private void tfNickKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNickKeyPressed
+        if (evt.getKeyChar() == '\n') {
+            btLogarActionPerformed(new ActionEvent(this, 0, ""));
+        }
+    }//GEN-LAST:event_tfNickKeyPressed
+
+    private void pfSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfSenhaKeyPressed
+        
+           if (evt.getKeyChar() == '\n') {
+            btLogarActionPerformed(new ActionEvent(this, 0, ""));
+        }
+    
+    }//GEN-LAST:event_pfSenhaKeyPressed
+  
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NovoUsuario;
