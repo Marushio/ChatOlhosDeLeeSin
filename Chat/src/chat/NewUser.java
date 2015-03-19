@@ -114,17 +114,25 @@ public class NewUser extends javax.swing.JFrame {
         Usuario novouser = new Usuario();
         novouser.setLogin(tfNewLogin.getText());
         novouser.setSenha(pfNewsenha.getText());
-       
-        
         try{
-            usuarioDAO.InserirUsuario(novouser);
-            JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso!","Usuario cadastrado",1); 
-            this.dispose();
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Usuario ja cadastrado, Tente outro","Erro",0); 
+        if(tfNewLogin.getText() == null || tfNewLogin.getText() == ""){
+            throw new Exception();
         }
-        
+        if(pfNewsenha.getText() == null || pfNewsenha.getText() == ""){
+            throw new Exception();
+        }
+       
+                 try{
+                      usuarioDAO.InserirUsuario(novouser);
+                      JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso!","Usuario cadastrado",1); 
+                      this.dispose();
+            
+                 }catch(Exception e){
+                     JOptionPane.showMessageDialog(null,"Usuario ja cadastrado, Tente outro","Erro",0); 
+                 }
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Nick ou senha em brnaco","Erro",0); 
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
