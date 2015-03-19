@@ -22,21 +22,24 @@ import javax.swing.JOptionPane;
  * @author a132067x
  */
 public class TelaMensagem extends javax.swing.JPanel {
-    private int delay = 2000;
-    private int interval = 1000;       
+   // private int delay = 2000;
+   // private int interval = 1000;       
     Timer timer=new Timer();
     /**
      * Creates new form telaMensagem
      */
     public TelaMensagem() {
         initComponents();
-        timer.scheduleAtFixedRate(new TimerTask(){    
+        Thread atualizar = new Thread ( new AtualizarMensagens(this));
+        atualizar.start();
+        
+        /*timer.scheduleAtFixedRate(new TimerTask(){    
         
         public void run(){
             atualizarMensagensTrocadas();
            }
          },delay,interval);
-               
+         */      
         
         
                 
@@ -142,7 +145,7 @@ public class TelaMensagem extends javax.swing.JPanel {
         this.atualizarMensagensTrocadas();
     }//GEN-LAST:event_btAtualizarActionPerformed
     
-    private void atualizarMensagensTrocadas(){
+    public void atualizarMensagensTrocadas(){
         
             
         
