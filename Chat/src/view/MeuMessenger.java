@@ -35,7 +35,7 @@ public class MeuMessenger extends javax.swing.JFrame {
         //Cria os panes
         this.setLocation(600, 220);
         
-        JPanel telaNick = new TelaNick(); 
+        JPanel telaNick = new TelaNick(usuario); 
         JPanel telaMensagem = new TelaMensagem();
         JPanel cards;
         //Cria os card de panes
