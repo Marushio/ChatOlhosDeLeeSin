@@ -9,15 +9,16 @@ package view;
 //import static java.util.Collections.list;
 //import java.util.Date;
 import controller.AtualizarMensagens;
+import controller.Mensagem;
 import controller.TelaMensagemController;
 import java.awt.event.ActionEvent;
-import java.util.Iterator;
-import java.util.List;
+
+
 import java.util.Timer;
-import java.util.TimerTask;
+//import java.util.TimerTask;
 //import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import model.MensagemDAO;
+
+
 //import javax.swing.JPanel;
 ////import javax.swing.JScrollPane;
 
@@ -46,9 +47,7 @@ public class TelaMensagem extends javax.swing.JPanel {
          },delay,interval);
          */      
           
-    }
-
-    
+    } 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -110,10 +109,11 @@ public class TelaMensagem extends javax.swing.JPanel {
                 .addGap(59, 59, 59))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
-       
-        telaControlrer.btEnviar(null, TOOL_TIP_TEXT_KEY);
+
+        telaControlrer.btEnviar(null,tfTexto.getText());
+        this.atualizarMensagensTrocadas();
         tfTexto.setText("");
     }//GEN-LAST:event_btEnviarActionPerformed
 
@@ -124,31 +124,7 @@ public class TelaMensagem extends javax.swing.JPanel {
     }//GEN-LAST:event_tfTextoKeyPressed
     
     public void atualizarMensagensTrocadas(){
-        
-            
-        
-        MensagemDAO mensagemDAO = new MensagemDAO();
-        try{
-            
-           List mensagens = mensagemDAO.ObterMensagens();
-           
-           String corpoMensagens="";
-           
-           Iterator i = mensagens.iterator();
-           
-           while(i.hasNext()){
-               Mensagem msg = (Mensagem) i.next();
-                corpoMensagens += "\n" + msg.getUsuario().getLogin() + ": " + msg.getTexto();
-           }
-           
-           taMensagem.setText(corpoMensagens);
-        }
-        catch(Exception e){
-            String alerta = "Não foi possivel atualizar.\n Problema com a conexão";
-            JOptionPane.showMessageDialog(null, alerta);
-        }
-       
-      
+        taMensagem.setText(telaControlrer.atualizarMensagensTrocadas());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -159,9 +135,5 @@ public class TelaMensagem extends javax.swing.JPanel {
     private javax.swing.JTextField tfTexto;
     // End of variables declaration//GEN-END:variables
 
-    private static class Mensagem {
-
-        public Mensagem() {
-        }
-    }
+   
 }

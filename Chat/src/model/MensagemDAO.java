@@ -6,6 +6,7 @@
 
 package model;
 
+import controller.Mensagem;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  */
 public class MensagemDAO {
     private UsuarioDAO usuarioDAO;
-    public void Inserir(Mensagem mensagem)throws Exception{
+    public void inserir(Mensagem mensagem)throws Exception{
         Connection con = ConnectionFactory.getFirebirdConnection();
         PreparedStatement psmt = null;
         try{
@@ -38,7 +39,7 @@ public class MensagemDAO {
             con.close();
         }
     }    
-    public ArrayList ObterMensagens()throws Exception{
+    public ArrayList obterMensagens()throws Exception{
         Connection con = ConnectionFactory.getFirebirdConnection();
         ResultSet rs = null;
         PreparedStatement psmt = null;
