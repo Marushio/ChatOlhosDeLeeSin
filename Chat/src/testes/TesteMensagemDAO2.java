@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package testes;
 
-import chat.Mensagem;
-import chat.MensagemDAO;
-import chat.Usuario;
+import controller.Mensagem;
+import controller.Usuario;
 import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.MensagemDAO;
 
 /**
  *
@@ -38,14 +32,14 @@ public class TesteMensagemDAO2 {
         MensagemDAO mensagemDAO = new MensagemDAO();
         
         try {
-            mensagemDAO.Inserir(mensagem);
-            mensagemDAO.Inserir(mensagem);
+            mensagemDAO.inserir(mensagem);
+            mensagemDAO.inserir(mensagem);
         } catch (Exception e) {
             System.out.println("Falha ao inserir mensagem.");
         }
         
         try {
-            List mensagens = mensagemDAO.ObterMensagens();
+            List mensagens = mensagemDAO.obterMensagens();
             String historicoMensagens = new String();
             Iterator i = mensagens.iterator();
             while(i.hasNext()){
