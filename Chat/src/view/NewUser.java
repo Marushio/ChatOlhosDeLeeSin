@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import controller.TelaNewUserController;
 import model.UsuarioDAO;
 import javax.swing.JOptionPane;
 
@@ -16,8 +17,11 @@ public class NewUser extends javax.swing.JFrame {
     /**
      * Creates new form NewUser
      */
+    TelaNewUserController telaNewUserController;
     public NewUser() {
+        telaNewUserController=new TelaNewUserController();
         initComponents();
+        
     }
 
     /**
@@ -110,27 +114,16 @@ public class NewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNewLoginActionPerformed
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario novouser = new Usuario();
-        novouser.setLogin(tfNewLogin.getText());
-        novouser.setSenha(pfNewsenha.getText());
+
         try{
-        if(tfNewLogin.getText() == null || tfNewLogin.getText() == ""){
-            throw new Exception();
-        }
-        if(pfNewsenha.getText() == null || pfNewsenha.getText() == ""){
-            throw new Exception();
-        }
-       
-                 try{
-                      usuarioDAO.InserirUsuario(novouser);
-                      JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso!","Usuario cadastrado",1); 
-                      this.dispose();
-            
-                 }catch(Exception e){
-                     JOptionPane.showMessageDialog(null,"Usuario ja cadastrado, Tente outro","Erro",0); 
-                 }
-         }catch(Exception e){
+            if(tfNewLogin.getText() == null || tfNewLogin.getText() == ""){
+                throw new Exception();
+            }
+            if(pfNewsenha.getText() == null || pfNewsenha.getText() == ""){
+                throw new Exception();
+            }
+            telaNewUserController.cadastrarNovoUsuario(tfNewLogin.getText(),pfNewsenha.getText());
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Nick ou senha em brnaco","Erro",0); 
         }
     }//GEN-LAST:event_jbCadastrarActionPerformed

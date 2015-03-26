@@ -16,8 +16,16 @@ import javax.swing.JPanel;
  */
 public class MeuMessenger extends javax.swing.JFrame {
 
-static Usuario usuario = new Usuario();
+    private static Usuario usuario = new Usuario();
 
+    public static Usuario getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(Usuario usuario) {
+        MeuMessenger.usuario = usuario;
+    }
+    
     /**
      * Creates new form MeuMessenger
      */
@@ -27,7 +35,7 @@ static Usuario usuario = new Usuario();
         //Cria os panes
         this.setLocation(600, 220);
         
-        JPanel telaNick = new TelaNick(); 
+        JPanel telaNick = new TelaNick(usuario); 
         JPanel telaMensagem = new TelaMensagem();
         JPanel cards;
         //Cria os card de panes
