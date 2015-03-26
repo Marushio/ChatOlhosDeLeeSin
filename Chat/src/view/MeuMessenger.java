@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-package chat;
-
+package view;
+import controller.Usuario; 
 import java.awt.CardLayout;
 //import java.util.List;
 import javax.swing.JPanel;
