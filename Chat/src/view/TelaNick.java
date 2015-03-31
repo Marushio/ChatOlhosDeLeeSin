@@ -22,13 +22,14 @@ public class TelaNick extends javax.swing.JPanel {
 
     
     TelaNickController telaNickControl;
-    Usuario usuario;
+   
+    MeuMessenger meuMessenger;
     
-    
-    public TelaNick(Usuario usuario) {
+    public TelaNick(MeuMessenger meuMessenger) {
         initComponents();
-        this.usuario=usuario;
-       // telaNickControl = new TelaNickController();
+        
+        this.meuMessenger=meuMessenger;
+        telaNickControl = new TelaNickController();
         
     }
 
@@ -129,18 +130,27 @@ public class TelaNick extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
-        usuario.setLogin(tfNick.getText());
-        usuario.setSenha(pfSenha.getText());
-        tfNick.setText("");
-        pfSenha.setText("");
-        if(telaNickControl.logar(usuario)){
-            Container janela = this.getParent();
-            janela.remove(this); 
-            janela.revalidate();
-            janela.repaint();
-        }
         
+       
+       
+       System.out.println("FOI AQUI 1");
+       try{
+            Usuario usuario;
+            usuario=telaNickControl.logar(tfNick.getText(),pfSenha.getText());
+            if(usuario!=null){
+                meuMessenger.setUsuario(usuario);
+                Container janela = this.getParent();
+                janela.remove(this); 
+                janela.revalidate();
+                janela.repaint();
+        }
+         tfNick.setText("");
+         pfSenha.setText("");
        // telaMensagem.show(true);
+       }catch(NullPointerException e){
+               System.out.println("nao FOI AQUI 2");
+                 }
+                 
         
     }//GEN-LAST:event_btLogarActionPerformed
  

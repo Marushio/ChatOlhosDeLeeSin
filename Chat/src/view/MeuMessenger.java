@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Versão 8.5
  */
 
 package view;
@@ -16,13 +14,13 @@ import javax.swing.JPanel;
  */
 public class MeuMessenger extends javax.swing.JFrame {
 
-    private static Usuario usuario = new Usuario();
+    private static Usuario usuario ;
 
-    public static Usuario getUsuario() {
+    public  Usuario getUsuario() {
         return usuario;
     }
 
-    public static void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         MeuMessenger.usuario = usuario;
     }
     
@@ -35,8 +33,8 @@ public class MeuMessenger extends javax.swing.JFrame {
         //Cria os panes
         this.setLocation(600, 220);
         
-        JPanel telaNick = new TelaNick(usuario); 
-        JPanel telaMensagem = new TelaMensagem();
+        JPanel telaNick = new TelaNick(this); 
+        JPanel telaMensagem = new TelaMensagem(this);
         JPanel cards;
         //Cria os card de panes
         cards = new JPanel(new CardLayout());

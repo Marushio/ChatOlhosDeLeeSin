@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
  */
 
 package view;
@@ -11,6 +9,7 @@ package view;
 import controller.AtualizarMensagens;
 import controller.Mensagem;
 import controller.TelaMensagemController;
+import controller.Usuario;
 import java.awt.event.ActionEvent;
 
 
@@ -32,7 +31,9 @@ public class TelaMensagem extends javax.swing.JPanel {
     Timer timer;
     TelaMensagemController telaControlrer;
     Mensagem mensagem;
-    public TelaMensagem() {
+    MeuMessenger meuMessenger;
+    public TelaMensagem(MeuMessenger meuMessenger) {
+        this.meuMessenger= meuMessenger;
         mensagem = new Mensagem();
         timer=new Timer();
         telaControlrer = new TelaMensagemController();
@@ -112,7 +113,7 @@ public class TelaMensagem extends javax.swing.JPanel {
 
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
 
-        telaControlrer.btEnviar(null,tfTexto.getText());
+        telaControlrer.btEnviar(meuMessenger.getUsuario(),tfTexto.getText());
         this.atualizarMensagensTrocadas();
         tfTexto.setText("");
     }//GEN-LAST:event_btEnviarActionPerformed

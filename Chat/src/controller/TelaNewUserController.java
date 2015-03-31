@@ -14,22 +14,28 @@ import model.UsuarioDAO;
  * @author a132067x
  */
 public class TelaNewUserController {
+    UsuarioDAO usuarioDAO;
+    Usuario  usuario;
+    
     public TelaNewUserController() {
+        usuarioDAO = new UsuarioDAO();
+        usuario=new Usuario();
     }
     
-    public void cadastrarNovoUsuario(String login, String senha) throws Exception{ 
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        if(usuarioDAO.obterUsuario(login).getLogin().matches(login))
-            JOptionPane.showMessageDialog(null, "Usuario ja cadastrado");
-        else{
-            try{
-                Usuario usuario = new Usuario();
-                usuario.setLogin(login);
-                usuario.setSenha(senha);
-                usuarioDAO.InserirUsuario(usuario);                
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar usuario no Banco");
-            }
-        }        
+    public boolean cadastrarNovoUsuario(String login, String senha){ 
+        usuario.setLogin(login);
+        usuario.setSenha(senha);
+       
+        
+        try{
+           usuarioDAO.InserirUsuario(usuario);
+           JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso!","Usuario cadastrado",1);
+           return true;
+        }catch(Exception e){
+                     JOptionPane.showMessageDialog(null,"Usuario ja cadastrado, Tente outro","Erro",0); 
+                     return false;
+        }
+        
+            
     }
 }

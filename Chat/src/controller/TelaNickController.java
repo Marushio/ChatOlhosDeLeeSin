@@ -19,26 +19,28 @@ public class TelaNickController {
     MeuMessenger meuMessenger;
     UsuarioDAO usuarioDAO;
 
-    public TelaNickController(MeuMessenger meuMessenger) {
+    public TelaNickController() {
         this.meuMessenger = meuMessenger;
         usuarioDAO=new UsuarioDAO();
     }
     
-    public boolean logar(Usuario usuario){      
-        Usuario user ;
-        boolean teste=false;
+    public Usuario logar(String login,String senha){      
+        Usuario user=null;
+        
+       // boolean teste=false;
         try{
-            user = usuarioDAO.obterUsuario(usuario.getLogin());
-            if(usuario.getSenha().equals(user.getSenha())){
-                teste= true;
-            }else{   
-                throw new Exception();
-            }    
+            
+            user = usuarioDAO.obterUsuario(login);
+           
+            if(!user.getSenha().equals(senha))
+            throw new Exception();
+            
         }catch(Exception e ){
             JOptionPane.showMessageDialog(null,"Login Inexistente ou senha errados","Erro",0);
+            
    
         }
-        return teste;
+        return user;
     }
     
 }
